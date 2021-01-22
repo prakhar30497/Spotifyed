@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Login from './Login';
 import Home from './Home';
-import { getAccessTokenFromUrl } from '../spotify';
+import { getAccessTokenFromUrl } from '../utils/spotify';
+import history from '../utils/history';
 
 import styled from 'styled-components';
 
@@ -11,17 +12,19 @@ const AppContainer = styled.div`
   min-height: 100vh;
 `;
 
-const App = () => {
+const App = (props) => {
 
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('accessToken'));
 
   useEffect(() => {
     const hash = getAccessTokenFromUrl();
-    window.location.hash = '';
+    window.history.pushState("", document.title, window.location.pathname);
 
     const accessToken = hash.access_token;
+    
 
     if(accessToken) {
+      localStorage.setItem('accessToken', accessToken);
       setToken(hash);
     }
   }, []);

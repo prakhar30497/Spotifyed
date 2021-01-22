@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+import history from './utils/history';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import configureStore from './configureStore';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+ReactDOM.render(<App />,
   document.getElementById('root')
 );
 

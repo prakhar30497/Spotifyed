@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { loginUrl } from '../spotify';
+import { loginUrl } from '../utils/spotify';
 
 const Login = styled.div`
     display: flex;
